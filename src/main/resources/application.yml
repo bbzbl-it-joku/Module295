@@ -1,0 +1,19 @@
+server.port: 9090
+spring:
+  application:
+    name: flugbuchungsapi
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Module295-DB
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/Module295-REALM
