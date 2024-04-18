@@ -22,6 +22,7 @@ public class AuthenticationRoleConverter implements Converter<Jwt, AbstractAuthe
         defaultGrantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
     }
 
+    @SuppressWarnings("unchecked")
     private static Collection<? extends GrantedAuthority> extractResourceRoles(final Jwt jwt) {
         Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
         Collection<String> resourceRoles;
@@ -36,6 +37,7 @@ public class AuthenticationRoleConverter implements Converter<Jwt, AbstractAuthe
         return Collections.emptySet();
     }
 
+    @SuppressWarnings("null")
     @Override
     public AbstractAuthenticationToken convert(final Jwt source) {
         Collection<GrantedAuthority> authorities = Stream.concat(defaultGrantedAuthoritiesConverter.convert(source)
