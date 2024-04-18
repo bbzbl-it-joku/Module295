@@ -18,7 +18,6 @@ import java.util.Optional;
 @RestController
 @SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/api/airline")
-@Validated
 public class AirlineController {
     private AirlineService airlineService;
 
