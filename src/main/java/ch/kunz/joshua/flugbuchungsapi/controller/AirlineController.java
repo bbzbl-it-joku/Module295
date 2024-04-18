@@ -20,7 +20,7 @@ import java.util.Optional;
 @RequestMapping("/api/airline")
 @Validated
 public class AirlineController {
-    private AirlineService airlineService;
+    private final AirlineService airlineService;
 
     public AirlineController(AirlineService airlineService) {
         this.airlineService = airlineService;

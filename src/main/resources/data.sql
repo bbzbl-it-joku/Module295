@@ -1,4 +1,4 @@
-INSERT INTO AirlineData (name, country)
+INSERT INTO airline_data (name, country)
 VALUES
     ('Swiss International Air Lines', 'Switzerland'),
     ('Edelweiss Air', 'Switzerland'),

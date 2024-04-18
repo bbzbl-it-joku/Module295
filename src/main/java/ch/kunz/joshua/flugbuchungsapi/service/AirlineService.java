@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class AirlineService {
 
-    private AirlineRepository airlineRepository;
+    private final AirlineRepository airlineRepository;
 
     public AirlineService(AirlineRepository airlineRepository) {
         this.airlineRepository = airlineRepository;

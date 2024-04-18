@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class KeycloakUtils {
-    private static String keycloakUrl = "http://localhost:8080/realms/Module295-REALM";
+    private static final String keycloakUrl = "http://localhost:8080/realms/Module295-REALM";
 
     public static String getAccessToken() {
         RestTemplate rest = new RestTemplate();
