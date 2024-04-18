@@ -1,4 +1,4 @@
-package ch.kunz.joshua.flugbuchungsapi.controller;
+package ch.kunz.joshua.flugbuchungsapi.controller.misc;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

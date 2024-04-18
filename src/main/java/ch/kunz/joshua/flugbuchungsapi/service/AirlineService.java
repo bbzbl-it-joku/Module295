@@ -33,6 +33,13 @@ public class AirlineService {
         return airlineRepository.findByCountry(country);
     }
 
+    public Airline update(Airline airline) {
+        if (!airlineRepository.existsById(airline.getId()) && airline.getId() != 0) {
+            throw new IllegalArgumentException("Airline does not exist");
+        }
+        return airlineRepository.save(airline);
+    }
+
     public Airline save(Airline airline) {
         return airlineRepository.save(airline);
     }

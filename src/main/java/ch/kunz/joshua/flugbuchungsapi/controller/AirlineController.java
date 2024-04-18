@@ -45,7 +45,12 @@ public class AirlineController {
     @PutMapping("/{id}")
     public ResponseEntity<Airline> updateAirline(@PathVariable Long id, @RequestBody Airline airline) {
         airline.setId(id);
-        return new ResponseEntity<>(airlineService.save(airline), HttpStatus.OK);
+        try {
+        return new ResponseEntity<>(airlineService.update(airline), HttpStatus.OK);
+        } catch (
+            IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @RolesAllowed(Roles.Admin)
