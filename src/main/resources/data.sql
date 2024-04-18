@@ -27,3 +27,26 @@ VALUES
     (200, 'Boeing 767', 9),
     (200, 'Boeing 767', 10),
     (300, 'Boeing 777', 10);
+
+INSERT INTO passenger (address, first_name, last_name)
+VALUES
+    ('Bahnhofstrasse 1, 4001 Basel', 'Hans', 'Muster'),
+    ('Bahnhofstrasse 2, 4001 Basel', 'Peter', 'Meier'),
+    ('Bahnhofstrasse 3, 4001 Basel', 'Anna', 'Schmidt'),
+    ('Bahnhofstrasse 4, 4001 Basel', 'Maria', 'Müller'),
+    ('Bahnhofstrasse 5, 4001 Basel', 'Thomas', 'Keller'),
+    ('Bahnhofstrasse 6, 4001 Basel', 'Hans', 'Moser'),
+    ('Bahnhofstrasse 7, 4001 Basel', 'Peter', 'Keller'),
+    ('Bahnhofstrasse 8, 4001 Basel', 'Anna', 'Moser'),
+    ('Bahnhofstrasse 9, 4001 Basel', 'Maria', 'Keller'),
+    ('Bahnhofstrasse 10, 4001 Basel', 'Thomas', 'Moser'),
+    ('Bahnhofstrasse 11, 4001 Basel', 'Hans', 'Keller'),
+    ('Bahnhofstrasse 12, 4001 Basel', 'Peter', 'Moser'),
+    ('Bahnhofstrasse 13, 4001 Basel', 'Anna', 'Keller'),
+    ('Bahnhofstrasse 14, 4001 Basel', 'Maria', 'Moser'),
+    ('Bahnhofstrasse 15, 4001 Basel', 'Thomas', 'Keller'),
+    ('Bahnhofstrasse 16, 4001 Basel', 'Hans', 'Moser'),
+    ('Bahnhofstrasse 17, 4001 Basel', 'Peter', 'Keller'),
+    ('Bahnhofstrasse 18, 4001 Basel', 'Anna', 'Moser'),
+    ('Bahnhofstrasse 19, 4001 Basel', 'Maria', 'Keller'),
+    ('Bahnhofstrasse 20, 4001 Basel', 'Thomas', 'Moser');
