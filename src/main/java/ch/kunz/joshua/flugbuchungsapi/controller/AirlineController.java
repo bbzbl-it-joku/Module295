@@ -3,12 +3,10 @@ package ch.kunz.joshua.flugbuchungsapi.controller;
 import ch.kunz.joshua.flugbuchungsapi.data.Airline;
 import ch.kunz.joshua.flugbuchungsapi.security.Roles;
 import ch.kunz.joshua.flugbuchungsapi.service.AirlineService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
