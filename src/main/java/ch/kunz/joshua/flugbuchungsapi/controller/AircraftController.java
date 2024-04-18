@@ -4,6 +4,7 @@ package ch.kunz.joshua.flugbuchungsapi.controller;
 import ch.kunz.joshua.flugbuchungsapi.data.Aircraft;
 import ch.kunz.joshua.flugbuchungsapi.security.Roles;
 import ch.kunz.joshua.flugbuchungsapi.service.AircraftService;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
@@ -25,37 +26,33 @@ public class AircraftController {
 
     @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
     @GetMapping
-    public ResponseEntity<List<Aircraft>> getAircrafts() {
-        return new ResponseEntity(aircraftService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Aircraft>> getAircrafts(@RequestParam(required = false) String type, @RequestParam(required = false) Long airlineId) {
+        if (type != null && airlineId != null) {
+            return new ResponseEntity(aircraftService.findByAirlineIdAndType(airlineId, type), HttpStatus.OK);
+        } else if (type != null && airlineId == null) {
+            return new ResponseEntity(aircraftService.findByType(type), HttpStatus.OK);
+        } else if (airlineId != null && type == null) {
+            return new ResponseEntity(aircraftService.findByAirlineId(airlineId), HttpStatus.OK);
+        } else {
+            return new ResponseEntity(aircraftService.findAll(), HttpStatus.OK);
+        }
     }
 
     @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
     @GetMapping("/{id}")
-    public ResponseEntity<Aircraft> getAircraftById(Long id) {
+    public ResponseEntity<Aircraft> getAircraftById(@PathVariable Long id) {
         return new ResponseEntity(aircraftService.findById(id).orElse(null), HttpStatus.OK);
-    }
-
-    @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
-    @GetMapping("/airline/{airlineId}")
-    public ResponseEntity<List<Aircraft>> getAircraftsByAirlineId(Long airlineId) {
-        return new ResponseEntity(aircraftService.findByAirlineId(airlineId), HttpStatus.OK);
-    }
-
-    @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
-    @GetMapping("/type/{type}")
-    public ResponseEntity<List<Aircraft>> getAircraftsByType(String type) {
-        return new ResponseEntity(aircraftService.findByType(type), HttpStatus.OK);
     }
 
     @RolesAllowed({Roles.Staff, Roles.Admin})
     @PostMapping
-    public ResponseEntity<Aircraft> createAircraft(Aircraft aircraft) {
+    public ResponseEntity<Aircraft> createAircraft(@RequestBody Aircraft aircraft) {
         return new ResponseEntity(aircraftService.save(aircraft), HttpStatus.CREATED);
     }
 
     @RolesAllowed({Roles.Staff, Roles.Admin})
     @PutMapping("/{id}")
-    public ResponseEntity<Aircraft> updateAircraft(Long id, Aircraft aircraft) {
+    public ResponseEntity<Aircraft> updateAircraft(@PathVariable Long id, @RequestBody Aircraft aircraft) {
         aircraft.setId(id);
         try {
             return new ResponseEntity(aircraftService.update(aircraft), HttpStatus.OK);
@@ -66,7 +63,7 @@ public class AircraftController {
 
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAircraft(Long id) {
+    public ResponseEntity<Void> deleteAircraft(@PathVariable Long id) {
         try {
             aircraftService.deleteById(id);
         } catch (IllegalArgumentException e) {

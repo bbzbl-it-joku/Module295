@@ -3,17 +3,24 @@ package ch.kunz.joshua.flugbuchungsapi.data;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 @Data
 @Entity
-public class Aircraft {
+public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     private Long id;
     @ManyToOne
     private Airline airline;
+    @ManyToOne
+    private Aircraft aircraft;
     @Column(nullable = false)
-    private String type;
+    private Timestamp departureTime;
     @Column(nullable = false)
-    private int capacity;
+    private String destination;
+    @Column(nullable = false)
+    private String origin;
+
 }

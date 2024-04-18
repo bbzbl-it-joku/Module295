@@ -32,6 +32,10 @@ public class AircraftService {
         return aircraftRepository.findByType(type);
     }
 
+    public List<Aircraft> findByAirlineIdAndType(Long airlineId, String type) {
+        return aircraftRepository.findByAirlineIdAndType(airlineId, type);
+    }
+
     public Aircraft update(Aircraft aircraft) {
         if (!aircraftRepository.existsById(aircraft.getId()) && aircraft.getId() != 0) {
             throw new IllegalArgumentException("Aircraft does not exist");
