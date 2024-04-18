@@ -1,4 +1,4 @@
-package ch.kunz.joshua.flugbuchungsapi.AirlineTests;
+package ch.kunz.joshua.flugbuchungsapi.airlinetests;
 
 import ch.kunz.joshua.flugbuchungsapi.data.Airline;
 import org.junit.jupiter.api.Test;

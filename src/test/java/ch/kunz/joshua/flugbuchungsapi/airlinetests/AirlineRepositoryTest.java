@@ -1,4 +1,4 @@
-package ch.kunz.joshua.flugbuchungsapi.AirlineTests;
+package ch.kunz.joshua.flugbuchungsapi.airlinetests;
 
 import ch.kunz.joshua.flugbuchungsapi.data.Airline;
 import ch.kunz.joshua.flugbuchungsapi.repository.AirlineRepository;
@@ -21,9 +21,7 @@ class AirlineRepositoryTest {
     void testFindByName() {
         String testName = "Test Airline";
         Optional<Airline> existingAirline = airlineRepository.findByName(testName);
-        if (existingAirline.isPresent()) {
-            airlineRepository.delete(existingAirline.get());
-        }
+        existingAirline.ifPresent(airline -> airlineRepository.delete(airline));
         Airline airline = new Airline("Switzerland", testName);
         airlineRepository.save(airline); // Save the airline to the database
 
@@ -43,13 +41,9 @@ class AirlineRepositoryTest {
 
         // Check if airlines with these names already exist and delete them if they do
         Optional<Airline> existingAirline1 = airlineRepository.findByName(testName1);
-        if (existingAirline1.isPresent()) {
-            airlineRepository.delete(existingAirline1.get());
-        }
+        existingAirline1.ifPresent(airline -> airlineRepository.delete(airline));
         Optional<Airline> existingAirline2 = airlineRepository.findByName(testName2);
-        if (existingAirline2.isPresent()) {
-            airlineRepository.delete(existingAirline2.get());
-        }
+        existingAirline2.ifPresent(airline -> airlineRepository.delete(airline));
 
         Airline airline1 = new Airline("Switzerland", testName1);
         Airline airline2 = new Airline("Switzerland", testName2);
@@ -69,9 +63,7 @@ class AirlineRepositoryTest {
     void testDeleteAirline() {
         String testName = "Test Airline";
         Optional<Airline> existingAirline = airlineRepository.findByName(testName);
-        if (existingAirline.isPresent()) {
-            airlineRepository.delete(existingAirline.get());
-        }
+        existingAirline.ifPresent(airline -> airlineRepository.delete(airline));
         Airline airline = new Airline("Switzerland", testName);
         airlineRepository.save(airline); // Save the airline to the database
 
@@ -92,9 +84,7 @@ class AirlineRepositoryTest {
         String testName = "Test Airline";
         String updatedName = "Updated Airline";
         Optional<Airline> existingAirline = airlineRepository.findByName(testName);
-        if (existingAirline.isPresent()) {
-            airlineRepository.delete(existingAirline.get());
-        }
+        existingAirline.ifPresent(airline -> airlineRepository.delete(airline));
         Airline airline = new Airline("Switzerland", testName);
         airlineRepository.save(airline); // Save the airline to the database
 
