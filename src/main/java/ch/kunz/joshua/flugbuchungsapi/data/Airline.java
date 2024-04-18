@@ -11,7 +11,6 @@ public class Airline {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    @Size(max = 255)
     @NotNull
     private long id;
     @Column(unique = true, nullable = false)
