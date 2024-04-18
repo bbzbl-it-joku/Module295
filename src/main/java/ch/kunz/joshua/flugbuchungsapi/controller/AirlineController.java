@@ -1,6 +1,6 @@
 package ch.kunz.joshua.flugbuchungsapi.controller;
 
-import ch.kunz.joshua.flugbuchungsapi.data.AirlineData;
+import ch.kunz.joshua.flugbuchungsapi.data.Airline;
 import ch.kunz.joshua.flugbuchungsapi.security.Roles;
 import ch.kunz.joshua.flugbuchungsapi.service.AirlineService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -28,25 +28,25 @@ public class AirlineController {
 
     @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
     @GetMapping
-    public ResponseEntity<List<AirlineData>> getAirlines() {
+    public ResponseEntity<List<Airline>> getAirlines() {
         return new ResponseEntity<>(airlineService.findAll(), HttpStatus.OK);
     }
 
     @RolesAllowed({Roles.Staff, Roles.Admin})
     @PostMapping
-    public ResponseEntity<AirlineData> createAirline(@RequestBody AirlineData airline) {
+    public ResponseEntity<Airline> createAirline(@RequestBody Airline airline) {
         return new ResponseEntity<>(airlineService.save(airline), HttpStatus.CREATED);
     }
 
     @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<AirlineData>> getAirlineById(@PathVariable Long id) {
+    public ResponseEntity<Optional<Airline>> getAirlineById(@PathVariable Long id) {
         return new ResponseEntity<>(airlineService.findById(id), HttpStatus.OK);
     }
 
     @RolesAllowed({Roles.Staff, Roles.Admin})
     @PutMapping("/{id}")
-    public ResponseEntity<AirlineData> updateAirline(@PathVariable Long id, @RequestBody AirlineData airline) {
+    public ResponseEntity<Airline> updateAirline(@PathVariable Long id, @RequestBody Airline airline) {
         airline.setId(id);
         return new ResponseEntity<>(airlineService.save(airline), HttpStatus.OK);
     }

@@ -1,6 +1,6 @@
 package ch.kunz.joshua.flugbuchungsapi.service;
 
-import ch.kunz.joshua.flugbuchungsapi.data.AirlineData;
+import ch.kunz.joshua.flugbuchungsapi.data.Airline;
 import ch.kunz.joshua.flugbuchungsapi.repository.AirlineRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,23 +17,23 @@ public class AirlineService {
     }
 
 
-    public List<AirlineData> findAll() {
+    public List<Airline> findAll() {
         return airlineRepository.findAll();
     }
 
-    public Optional<AirlineData> findById(Long id) {
+    public Optional<Airline> findById(Long id) {
         return airlineRepository.findById(id);
     }
 
-    public Optional<AirlineData> findByName(String name) {
+    public Optional<Airline> findByName(String name) {
         return airlineRepository.findByName(name);
     }
 
-    public List<AirlineData> findByCountry(String country) {
+    public List<Airline> findByCountry(String country) {
         return airlineRepository.findByCountry(country);
     }
 
-    public AirlineData save(AirlineData airlineData) {
+    public Airline save(Airline airlineData) {
         return airlineRepository.save(airlineData);
     }
 
