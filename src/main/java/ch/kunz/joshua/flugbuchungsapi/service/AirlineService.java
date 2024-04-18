@@ -33,8 +33,8 @@ public class AirlineService {
         return airlineRepository.findByCountry(country);
     }
 
-    public Airline save(Airline airlineData) {
-        return airlineRepository.save(airlineData);
+    public Airline save(Airline airline) {
+        return airlineRepository.save(airline);
     }
 
     public void deleteById(Long id) {
