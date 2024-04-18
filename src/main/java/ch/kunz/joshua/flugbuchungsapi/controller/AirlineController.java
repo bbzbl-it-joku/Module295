@@ -56,7 +56,11 @@ public class AirlineController {
     @RolesAllowed(Roles.Admin)
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAirline(@PathVariable Long id) {
-        airlineService.deleteById(id);
+        try {
+            airlineService.deleteById(id);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

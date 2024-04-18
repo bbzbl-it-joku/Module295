@@ -45,6 +45,10 @@ public class AirlineService {
     }
 
     public void deleteById(Long id) {
-        airlineRepository.deleteById(id);
+        if (!airlineRepository.existsById(id) && id != 0) {
+            throw new IllegalArgumentException("Airline does not exist");
+        } else {
+            airlineRepository.deleteById(id);
+        }
     }
 }
