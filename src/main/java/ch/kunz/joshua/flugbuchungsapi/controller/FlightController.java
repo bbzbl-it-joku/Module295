@@ -41,6 +41,12 @@ public class FlightController {
         return new ResponseEntity<>(flightService.findById(id).orElse(null), HttpStatus.OK);
     }
 
+    @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
+    @GetMapping("/airline/{airlineId}")
+    public ResponseEntity<List<Flight>> getFlightsByAirlineId(@PathVariable Long airlineId) {
+        return new ResponseEntity<>(flightService.findByAirlineId(airlineId), HttpStatus.OK);
+    }
+
     @RolesAllowed({Roles.Staff, Roles.Admin})
     @PostMapping
     public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {

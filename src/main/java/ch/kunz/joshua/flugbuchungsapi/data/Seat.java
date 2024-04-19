@@ -1,5 +1,6 @@
 package ch.kunz.joshua.flugbuchungsapi.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ public class Seat {
     @Column(nullable = false)
     private String seatNumber;
     @ManyToOne
+    @JsonIgnore
     private Flight flight;
     @ManyToOne
     private Passenger passenger;

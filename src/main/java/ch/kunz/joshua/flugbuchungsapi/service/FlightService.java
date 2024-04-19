@@ -36,7 +36,7 @@ public class FlightService {
     }
 
     public List<Flight> findByAirlineId(Long airlineId) {
-        return flightRepository.findByAirlineId(airlineId);
+        return flightRepository.findByAircraft_Airline_Id(airlineId);
     }
 
     public List<Flight> findByAircraftId(Long aircraftId) {

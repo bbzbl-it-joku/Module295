@@ -14,8 +14,6 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Airline airline;
-    @ManyToOne
     private Aircraft aircraft;
     @Column(nullable = false)
     private Timestamp departureTime;
@@ -23,6 +21,6 @@ public class Flight {
     private String destination;
     @Column(nullable = false)
     private String origin;
-    @OneToMany
+    @OneToMany(mappedBy = "flight")
     private List<Seat> seats;
 }
