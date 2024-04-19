@@ -3,7 +3,6 @@ package ch.kunz.joshua.flugbuchungsapi.controller;
 import ch.kunz.joshua.flugbuchungsapi.data.Flight;
 import ch.kunz.joshua.flugbuchungsapi.security.Roles;
 import ch.kunz.joshua.flugbuchungsapi.service.FlightService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;

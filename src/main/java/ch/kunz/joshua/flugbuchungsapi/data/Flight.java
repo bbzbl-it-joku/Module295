@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Flight {
@@ -21,5 +23,6 @@ public class Flight {
     private String destination;
     @Column(nullable = false)
     private String origin;
-
+    @OneToMany
+    private List<Seat> seats;
 }

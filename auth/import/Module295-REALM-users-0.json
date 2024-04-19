@@ -1,0 +1,73 @@
+{
+  "realm" : "Module295-REALM",
+  "users" : [ {
+    "id" : "a87875cd-e0c0-4c2a-8549-d22c4e61e9cc",
+    "createdTimestamp" : 1713466521385,
+    "username" : "admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "1042f281-f6bf-459f-9fc7-5439c69a19e8",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1713466533153,
+      "secretData" : "{\"value\":\"8t1d95KhHYHgwjT0jH3e3g4uka91a+N3J/f3RsugHz8=\",\"salt\":\"ZiTvKl7oX3gbZ/MoMe6fPg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-module295-realm" ],
+    "clientRoles" : {
+      "ch.kunz.joshua.flugbuchungsapi" : [ "ROLE_admin" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "1a21a430-b855-4c56-aa76-74e4b01c2003",
+    "createdTimestamp" : 1713466490454,
+    "username" : "staff",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "863e5834-7c67-4208-85b0-f6ec254a6c71",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1713466511552,
+      "secretData" : "{\"value\":\"+vauUyEVV1JHaTvNnqfNGzJEx7CEDbsFyEPY43VGFLc=\",\"salt\":\"wm+U7KPHBOquN0CVJ3ykvg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-module295-realm" ],
+    "clientRoles" : {
+      "ch.kunz.joshua.flugbuchungsapi" : [ "ROLE_staff" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "40959020-fbc6-4906-8fd5-767ca83fe6cf",
+    "createdTimestamp" : 1713466442126,
+    "username" : "user",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "48ef6f04-3d82-4cb5-a3b7-1eebdece4fc7",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1713466452635,
+      "secretData" : "{\"value\":\"+zV7GqKVXlrMIowga0/WJB498gMQPC2NYsuge6ETaE4=\",\"salt\":\"IFkTHniRDuVRiucolC269w==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-module295-realm" ],
+    "clientRoles" : {
+      "ch.kunz.joshua.flugbuchungsapi" : [ "ROLE_user" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

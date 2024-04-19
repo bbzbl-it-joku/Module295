@@ -50,3 +50,32 @@ VALUES
     ('Bahnhofstrasse 18, 4001 Basel', 'Anna', 'Moser'),
     ('Bahnhofstrasse 19, 4001 Basel', 'Maria', 'Keller'),
     ('Bahnhofstrasse 20, 4001 Basel', 'Thomas', 'Moser');
+
+INSERT INTO seat (seat_number, flight_id, passenger_id)
+VALUES
+    ('',,);
+
+INSERT INTO flight (departure_time, destination, origin, airline_id, aircraft_id)
+VALUES 
+    ('2024-04-19 08:00:00', 'Zurich', 'Paris', 5, 5),
+    ('2024-04-19 10:15:00', 'Geneva', 'London', 6, 6),
+    ('2024-04-19 13:00:00', 'Zurich', 'Berlin', 7, 7),
+    ('2024-04-19 14:30:00', 'Bern', 'Vienna', 8, 8),
+    ('2024-04-19 16:45:00', 'Basel', 'Amsterdam', 9, 9),
+    ('2024-04-19 18:30:00', 'Geneva', 'Madrid', 10, 10),
+    ('2024-04-19 20:15:00', 'Zurich', 'Rome', 5, 11),
+    ('2024-04-19 21:45:00', 'Bern', 'Barcelona', 6, 12),
+    ('2024-04-19 23:30:00', 'Geneva', 'Brussels', 7, 13),
+    ('2024-04-20 06:30:00', 'Zurich', 'Munich', 11, 14),
+    ('2024-04-20 08:00:00', 'Geneva', 'Lisbon', 12, 15),
+    ('2024-04-20 09:30:00', 'Basel', 'Vienna', 13, 16),
+    ('2024-04-20 11:00:00', 'Bern', 'Stockholm', 14, 17),
+    ('2024-04-20 12:30:00', 'Zurich', 'Oslo', 15, 18),
+    ('2024-04-20 14:00:00', 'Geneva', 'Copenhagen', 16, 19),
+    ('2024-04-20 15:30:00', 'Basel', 'Dublin', 17, 20),
+    ('2024-04-20 17:00:00', 'Bern', 'Helsinki', 18, 21),
+    ('2024-04-20 18:30:00', 'Zurich', 'Prague', 19, 22),
+    ('2024-04-20 20:00:00', 'Geneva', 'Warsaw', 20, 23),
+    ('2024-04-20 21:30:00', 'Basel', 'Budapest', 21, 24),
+    ('2024-04-20 23:00:00', 'Bern', 'Krakow', 22, 25);
+

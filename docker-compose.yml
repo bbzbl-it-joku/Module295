@@ -1,0 +1,36 @@
+version: '3.8'
+
+
+services:
+
+  postgres:
+      image: postgres:15.5-alpine3.19
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+      ports:
+        - "5432:5432"
+
+  auth:
+    image: quay.io/keycloak/keycloak:23.0.3
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - PROXY_ADDRESS_FORWARDING=false
+      - LOG_LEVEL=ALL
+      - KEYCLOAK_IMPORT=/opt/keycloak/data/import/Module295-REALM-realm.json
+    depends_on:
+      - postgres
+    command:
+      - start-dev
+    volumes:
+      - ./auth/import:/opt/keycloak/data/import
+      - ./auth/keycloak.conf:/opt/keycloak/conf/keycloak.conf
+
+
+volumes:
+  postgres_data:
