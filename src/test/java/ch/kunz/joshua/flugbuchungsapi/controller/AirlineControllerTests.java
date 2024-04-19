@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -94,59 +94,46 @@ public class AirlineControllerTests {
 
     @Test
     @Order(6)
-    public void testGetByNameAndCountryNotFound() throws Exception {
-        api.perform(get("/api/airline?name=ANA&country=Germany").header("Authorization", "Bearer " + accessToken)
-                .with(csrf()))
-        .andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(containsString("[]")));
+    public void testUpdateEntry() throws Exception {
+        api.perform(put("/api/airline/1").header("Authorization", "Bearer " + accessToken)
+                        .with(csrf())
+                        .contentType("application/json")
+                        .content("{\"name\":\"Swiss International Air Lines\",\"country\":\"TEST\"}"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("TEST")));
+
+        api.perform(get("/api/airline/1").header("Authorization", "Bearer " + accessToken)
+                        .with(csrf()))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("TEST")));
     }
 
     @Test
     @Order(7)
-    public void testGetByIdNotFound() throws Exception {
-        api.perform(get("/api/airline/4").header("Authorization", "Bearer " + accessToken)
+    public void testCreateEntry() throws Exception {
+        api.perform(post("/api/airline").header("Authorization", "Bearer " + accessToken)
+                        .with(csrf())
+                        .contentType("application/json")
+                        .content("{\"name\":\"TEST\",\"country\":\"TEST\"}"))
+                .andDo(print()).andExpect(status().isCreated())
+                .andExpect(content().string(containsString("TEST")));
+
+        api.perform(get("/api/airline?name=TEST").header("Authorization", "Bearer " + accessToken)
                         .with(csrf()))
-                .andDo(print()).andExpect(status().isNotFound());
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("TEST")));
     }
 
     @Test
     @Order(8)
-    public void testGetByIdBadRequest() throws Exception {
-        api.perform(get("/api/airline/0").header("Authorization", "Bearer " + accessToken)
+    public void testDeleteEntry() throws Exception {
+        api.perform(delete("/api/airline/1").header("Authorization", "Bearer " + accessToken)
                         .with(csrf()))
-                .andDo(print()).andExpect(status().isBadRequest());
-    }
+                .andDo(print()).andExpect(status().isOk());
 
-    @Test
-    @Order(9)
-    public void testGetByNameNotFound() throws Exception {
-        api.perform(get("/api/airline?name=KLM").header("Authorization", "Bearer " + accessToken)
+        api.perform(get("/api/airline/1").header("Authorization", "Bearer " + accessToken)
                         .with(csrf()))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("[]")));
+                .andDo(print()).andExpect(status().isNotFound());
+
     }
-
-    @Test
-    @Order(10)
-    public void testGetByCountryNotFound() throws Exception {
-        api.perform(get("/api/airline?country=France").header("Authorization", "Bearer " + accessToken)
-                        .with(csrf()))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("[]")));
-    }
-
-    @Test
-    @Order(11)
-    public void testGetAllNotFound() throws Exception {
-        airlineRepository.deleteAll();
-        api.perform(get("/api/airline").header("Authorization", "Bearer " + accessToken)
-                        .with(csrf()))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("[]")));
-    }
-
-    @Test
-    @Order(12)
-
-
 }
