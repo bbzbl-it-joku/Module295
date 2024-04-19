@@ -16,4 +16,20 @@ public class Passenger {
     private String lastName;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String address;
+
+    public Passenger() {
+    }
+
+    public Passenger(String firstName, String lastName, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+    }
+
+    public Passenger(Long id, String firstName, String lastName, String address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+    }
 }

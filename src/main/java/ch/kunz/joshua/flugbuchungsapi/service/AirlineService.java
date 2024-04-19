@@ -25,12 +25,16 @@ public class AirlineService {
         return airlineRepository.findById(id);
     }
 
-    public Optional<Airline> findByName(String name) {
+    public List<Airline> findByName(String name) {
         return airlineRepository.findByName(name);
     }
 
     public List<Airline> findByCountry(String country) {
         return airlineRepository.findByCountry(country);
+    }
+
+    public List<Airline> findByNameAndCountry(String name, String country) {
+        return airlineRepository.findByNameAndCountry(name, country);
     }
 
     public Airline update(Airline airline) {

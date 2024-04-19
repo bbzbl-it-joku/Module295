@@ -23,4 +23,22 @@ public class Flight {
     private String origin;
     @OneToMany(mappedBy = "flight")
     private List<Seat> seats;
+
+    public Flight() {
+    }
+
+    public Flight(Aircraft aircraft, Timestamp departureTime, String destination, String origin) {
+        this.aircraft = aircraft;
+        this.departureTime = departureTime;
+        this.destination = destination;
+        this.origin = origin;
+    }
+
+    public Flight(Long id, Aircraft aircraft, Timestamp departureTime, String destination, String origin) {
+        this.id = id;
+        this.aircraft = aircraft;
+        this.departureTime = departureTime;
+        this.destination = destination;
+        this.origin = origin;
+    }
 }

@@ -14,4 +14,18 @@ public class Airline {
     private String name;
     @Column(nullable = false)
     private String country;
+
+    public Airline() {
+    }
+
+    public Airline(String name, String country) {
+        this.name = name;
+        this.country = country;
+    }
+
+    public Airline(long id, String name, String country) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+    }
 }

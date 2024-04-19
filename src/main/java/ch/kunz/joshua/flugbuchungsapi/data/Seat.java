@@ -23,4 +23,18 @@ public class Seat {
     private Flight flight;
     @ManyToOne
     private Passenger passenger;
+
+    public Seat() {
+    }
+
+    public Seat(String seatNumber, Flight flight) {
+        this.seatNumber = seatNumber;
+        this.flight = flight;
+    }
+
+    public Seat(Long id, String seatNumber, Flight flight) {
+        this.id = id;
+        this.seatNumber = seatNumber;
+        this.flight = flight;
+    }
 }

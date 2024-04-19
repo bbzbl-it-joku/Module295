@@ -25,7 +25,14 @@ public class AirlineController {
 
     @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
     @GetMapping
-    public ResponseEntity<List<Airline>> getAirlines() {
+    public ResponseEntity<List<Airline>> getAirlines(@RequestParam(required = false) String country, @RequestParam(required = false) String name) {
+        if (country != null && name != null) {
+            return new ResponseEntity<>(airlineService.findByNameAndCountry(name, country), HttpStatus.OK);
+        } else if (country != null) {
+            return new ResponseEntity<>(airlineService.findByCountry(country), HttpStatus.OK);
+        } else if (name != null) {
+            return new ResponseEntity<>(airlineService.findByName(name), HttpStatus.OK);
+        }
         return new ResponseEntity<>(airlineService.findAll(), HttpStatus.OK);
     }
 
