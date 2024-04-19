@@ -16,8 +16,6 @@ import org.springframework.test.annotation.Rollback;
 public class AircraftRepositoryTests {
     @Autowired
     private AircraftRepository aircraftRepository;
-    @Autowired
-    private AirlineRepository airlineRepository;
 
     private Aircraft aircraft;
     private Airline airline;
