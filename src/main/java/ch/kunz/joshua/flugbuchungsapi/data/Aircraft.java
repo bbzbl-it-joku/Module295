@@ -10,8 +10,9 @@ public class Aircraft {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Airline airline;
+
     @Column(nullable = false)
     private String type;
     @Column(nullable = false)
