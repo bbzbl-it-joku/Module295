@@ -1,7 +1,10 @@
 package ch.kunz.joshua.flugbuchungsapi.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,6 +17,11 @@ public class Airline {
     private String name;
     @Column(nullable = false)
     private String country;
+
+
+    @OneToMany(mappedBy = "airline", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Aircraft> aircrafts;
 
     public Airline() {
     }
