@@ -47,6 +47,12 @@ public class FlightController {
         return new ResponseEntity<>(flightService.findByAirlineId(airlineId), HttpStatus.OK);
     }
 
+    @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
+    @GetMapping("/seat/{seatId}")
+    public ResponseEntity<Flight> getFlightsBySeatId(@PathVariable Long seatId) {
+        return new ResponseEntity<>(flightService.findBySeatId(seatId), HttpStatus.OK);
+    }
+
     @RolesAllowed({Roles.Staff, Roles.Admin})
     @PostMapping
     public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {

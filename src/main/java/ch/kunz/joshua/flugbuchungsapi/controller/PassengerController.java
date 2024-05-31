@@ -37,7 +37,7 @@ public class PassengerController {
 
     @RolesAllowed({Roles.User, Roles.Staff, Roles.Admin})
     @GetMapping("/{id}")
-    public ResponseEntity<Passenger> getPassengerById(Long id) {
+    public ResponseEntity<Passenger> getPassengerById(@PathVariable Long id) {
         return new ResponseEntity<>(passengerService.findById(id).orElse(null), HttpStatus.OK);
     }
 

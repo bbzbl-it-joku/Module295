@@ -23,6 +23,10 @@ public class FlightService {
         return flightRepository.findById(id);
     }
 
+    public Flight findBySeatId(Long seatId) {
+        return flightRepository.findBySeats_Id(seatId);
+    }
+
     public List<Flight> findByDestination(String destination) {
         return flightRepository.findByDestination(destination);
     }
